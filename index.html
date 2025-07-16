@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<title>YummyNest</title>
+  <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+	<div class="container">
+		<nav class="nav">
+			<div class="container">
+				<header class="h1">
+					<a href="index.html" style="text-decoration: none; color: inherit;">
+						<img src=" YummyNest site\img\logo.png" class="logo" alt="YummyNest Logo" style="vertical-align: middle;">
+						<h1 style="display: inline;">YummyNest</h1>
+					</a>
+				</header>	
+				<div class="search-container">
+					<div class="search-box">
+						<svg xmlns="http://www.w3.org/2000/svg" class="search-icon" height="24px" viewBox="0 -960 960 960" width="24px" >
+						<path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+						<input type="text" id="searchInput" class="search-input" placeholder="What would you like to cook?">
+					</div>
+				</div>
+					<div class="burger" onclick="toggleMenu()">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					  <button class="login-btn" onclick="toggleLogin()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/>
+      </svg>
+      Log In
+    </button>
+  </nav>
+
+  <div class="login-modal" id="loginModal">
+    <span class="close-btn" onclick="toggleLogin()">&times;</span>
+    <h3>Log In</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button style="margin-top:10px">Submit</button>
+    <div class="login-footer">
+      Don't have an account? <button onclick="register()">Register</button>
+    </div>
+
+  </div>
+					
+						<div class="menu" id="navMenu">
+							<button class="nav-button" onclick="location.href='index.html'">Home</button>
+							<button class="nav-button" onclick="showAbout()">About Us</button>
+							<div class="dropdown">
+								<button class="nav-button" onclick="toggleDropdown()">Recipes</button>
+								<div class="dropdown-menu" id="recipeDropdown" style="display: none;">
+									<div class="dropdown-column">
+										<span class="dropdown-title">By Meal</span>
+										<button onclick="showRecipe('breakfast-recipe')">Breakfast</button>
+										<button onclick="showRecipe('lunch-recipe')">Lunch</button>
+										<button onclick="showRecipe('dinner-recipe')">Dinner</button>
+										<button onclick="showRecipe('dessert-recipe')">Desserts</button>
+								 </div>
+								<div class="dropdown-column">
+									<span class="dropdown-title">By Diet</span>
+									<button onclick="showRecipe('vegan-recipe')">Vegan</button>
+									<button onclick="showRecipe('vegetarian-recipe')">Vegetarian</button>
+								</div> 
+									</div>
+								</div>
+									<button class="nav-button" id="Favourites" onclick="showFavourite()">Favourites</button>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<hr class="divider">
+				<header class="h2"><h2>Recipe of the day</h2></header>
+					<div class="recipe-container">
+						<div class="recipe-image">
+							<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\seco-de-pollo.webp" width="600" alt="Seco de Pollo">
+						</div>
+					<div class="ingredients">
+						<h3>Ingredients</h3>
+						<p>Yield: 4 servings</p>
+						<ul>
+							<li>1 large yellow onion, roughly chopped</li>
+							<li>1 large green bell pepper, roughly chopped</li>
+							<li>4 garlic cloves, roughly chopped</li>
+							<li>1 whole (4-pound) chicken, cut into 8 pieces (or 3 to 4 pounds bone-in, skin-on chicken pieces of your choice)</li>
+							<li>Kosher salt (such as Diamond Crystal)</li>
+							<li>2 tablespoons extra-virgin olive oil</li>
+							<li>1 (12-ounce) can lager beer</li>
+							<li>4 ounces frozen naranjilla pulp (see Tip), thawed, or ½ cup fresh orange juice (from 1 to 2 oranges)</li>
+							<li>1 tablespoon sazón with achiote (also called annatto)</li>
+							<li>1½ pounds tomatoes, roughly chopped</li>
+							<li>1 tablespoon plus 1½ teaspoons white vinegar</li>
+							<li>1 cup packed finely chopped cilantro leaves and stems</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipeInstruction',this)" class="instruction-button" >Show Recipe Details</button>
+						<button class="fav-button" data-id="recipe1" onclick="toggleFavourite(this)">
+					    <div class="tooltip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+               <span class="tooltiptext">Add to Favourites</span>
+              </div>					
+						</button>
+						</div>
+					</div>
+				</div>
+					
+					<div id="recipeInstruction" class=" recipeInstruction" style="display: none;">
+						<p><header class="h1"><h3>Cooking Instruction</h3></header>
+						<p><strong>Step 1:</strong> Prepare the sofrito mixture: In a blender or food processor, combine the onion, bell pepper, and garlic until fully blended into a thick purée; set aside.</p>
+						<p><strong>Step 2:</strong> Pat the chicken dry, then season it all over with 1 tablespoon salt. Heat the oil in a large Dutch oven or pot over medium-high. Once the oil is shimmering, add the chicken, skin side down, in batches as needed to avoid overcrowding. Cook to a deep brown, about 5 minutes. Flip the pieces and cook on the other side until browned, another 4 to 5 minutes. Put the chicken on a plate and set aside. Repeat with the remaining chicken.</p>
+						<p><strong>Step 3:</strong> Reduce the heat to medium and add the sofrito, being careful not to splatter. Using a wooden spoon, scrape up any browned bits from the bottom of the pot, and cook the sofrito until fragrant, about 5 minutes, stirring frequently to avoid browning.</p>
+						<p><strong>Step 4:</strong> Increase the heat to high and stir in the beer, naranjilla pulp, sazón, and 2 teaspoons salt until fully combined. Bring to a boil.</p>
+						<p><strong>Step 5:</strong> While waiting for the pot to boil, add the tomatoes to the blender or food processor and blend into a thick purée. Pour the puréed tomatoes directly into the pot and stir until fully combined. Return the pot to a boil.</p>
+						<p><strong>Step 6:</strong> Add the chicken and any accumulated juices back to the pot, being sure to fully submerge the chicken in the broth. Cover with a lid, reduce the heat to medium-low, and cook the chicken, stirring occasionally to avoid scorching, until it starts to become tender and just begins to loosen from the bone, about 20 minutes.</p>
+						<p><strong>Step 7:</strong> Remove the lid and increase the heat to medium-high. Cook, uncovered, until the chicken is very tender and the liquid reduces and thickens, about 25 minutes. If the chicken is cooked to your desired tenderness before the sauce has thickened, transfer the chicken to a plate while reducing the sauce, then return it to the pot to heat through. Taste and adjust the salt. Remove from the heat.</p>
+						<p><strong>Step 8:</strong> Just before serving, add the vinegar and cilantro, letting the residual heat wilt the herb. Mix until the cilantro is evenly distributed. Serve while hot.</p>
+					</div>	
+				</div> 
+
+
+
+<div class="recipe" id="dinner-recipe" style="display: none;">
+			<header class="h2"><h2>Dinner Recipes</h2></header>
+			<header class="h3"><p>Kale and Butternut Squash Bowl With Jammy Eggs</p></header>
+			<div class="recipe-container">
+				<div class="recipe-image">
+					<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\butternut-squash-and-kale-bowl.webp" width="550" alt="Kale and Butternut Squash Bowl">
+				</div>
+			<div class="Ingredients">
+				<h3>Ingredients</h3>
+				<p>Yield: 2 servings</p>
+				<ul>
+					<li>3 large eggs</li>
+					<li>¾ cup plain, full-fat yogurt</li>
+					<li> 1 teaspoon lemon zest plus 2 tablespoons juice (from 1 lemon)</li>
+					<li>2 teaspoons finely chopped fresh ginger</li>
+					<li>1 teaspoon toasted sesame oil</li>
+					<li>Salt</li>
+					<li>12 ounces butternut, honeynut or kabocha squash, seeds removed and sliced ½-inch thick</li>
+					<li>8 ounces broccoli, cauliflower or a combination, cut into 1-inch florets; stems, thinly sliced</li>
+					<li>4 ounces (about 4 packed cups) torn kale leaves, or another hearty green like chard or mustard</li>
+					<li>Toasted sesame seeds (any color), for serving</li>
+				</ul>
+			
+			  <div class="rec-inform">
+				<button onclick="toggleRecipeDetails('recipe_Instruction', this)" class="instruction-button">Show Recipe Details</button>
+				<button class="fav-button"data-id="recipe2" onclick="toggleFavourite(this)">						
+					<div class="tooltip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+            <span class="tooltiptext">Add to Favourites</span>
+          </div>
+				</button>
+				</div>
+				</div>
+   </div>
+
+			<div id="recipe_Instruction" class="recipeInstruction" style="display: none;">
+				<header class="h1"><h3>Cooking Instruction</h3></header>
+				<p><strong>Step 1:</strong> In a large (12-inch) skillet with a lid or a large Dutch oven, bring l inch of water to a boil over high. Carefully add the eggs. (They may not be fully submerged and that's OK.)
+						Cover and boil for 6 minutes. Transfer the eggs to a bowl to cool. Pour off all but ¼ inch of water</p>
+				<p><strong>Step 2:</strong> While the eggs steam, in a liquid measuring cup or small bowl, stir together the yogurt, lemon zest and juice, ginger and sesame oil; season with salt. It might taste too puckery at this point, but it will balance out when on the vegetables.</p>
+				<p><strong>Step 3:</strong>Arrange the squash in a single layer in the shallow water; season with salt. Cover, bring to a boil over high, and cook for 5 minutes. Scatter the broccoli on top of the squash, season with salt, then pile the kale on top of the broccoli and season with salt. If the water has evaporated, add another ¼ inch of water. Cover and cook until the squash is tender and the broccoli is bright green and crisp-tender, 2 to 4 minutes. Turn off the heat but keep the skillet covered while you peel the eggs.</p>
+				<p><strong>Step 4:</strong>Peel and halve the eggs, then season with salt. Divide the vegetables and eggs between plates, then drizzle with plenty of sauce and scatter sesame seeds on top. The vegetables, eggs and sauce will keep for up to 4 days in the fridge and are good warm, room temperature or cold from the fridge.</p>
+				</div>
+
+				<header class="h3"><p>Chicken and Vermicelli Soup With Lime </p></header>
+				<div class="recipe-container">
+					<div class="recipe-image">
+						<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\Chicken-and-Vermicelli-Soup.webp" width="550" alt="Chicken and Vermicelli Soup With Lime">
+					</div>
+				<div class="Ingredients">
+					<h3>Ingredients</h3>
+					<p>Yield: 6 servings</p>
+					<ul>
+						<li>2 tablespoons butter or olive oil</li>
+						<li>1 small or ½ large yellow onion, finely chopped</li>
+						<li> ½ teaspoon ground turmeric</li>
+						<li>1 medium Yukon Gold potato, diced into small cubes</li>
+						<li>1 large carrot, finely chopped</li>
+						<li>2 tablespoons tomato paste</li>
+						<li>1 boneless, skinless chicken breast</li>
+						<li>Kosher salt (such as Diamond Crystal) and black pepper</li>
+						<li>¾ cup broken wheat vermicelli noodles, broken angel hair pasta or fideo</li>
+						<li>1 tablespoon chopped parsley, plus more for serving</li>
+						<li>1 tablespoon lime or lemon juice, plus more as needed Lime or lemon slices, for serving</li>
+					</ul>
+					<div class="rec-inform">
+					<button onclick="toggleRecipeDetails('recipe_Instruction2', this)" class="instruction-button">Show Recipe Details</button>
+					<button class="fav-button"data-id="recipe3" onclick="toggleFavourite(this)">
+						<div class="tooltip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+              <span class="tooltiptext">Add to Favourites</span>
+            </div>
+					</button>
+					</div>
+				</div>
+				</div>
+				<div id="recipe_Instruction2" class="recipeInstruction" style="display: none;">
+					<header class="h1"><h3>Cooking Instruction</h3></header>
+					<p><strong>Step 1:</strong>In a large pot, melt the butter over medium. Add the onion and cook, stirring frequently, until softened and translucent, about 5 minutes; you don't want the onion to take on any color. Sprinkle in the turmeric and stir until fragrant, about 30 seconds. Add the potato and carrot, then stir and cook for 2 minutes.</p>
+					<p><strong>Step 2:</strong>Adjust heat to medium-low and add the tomato paste. Cook, stirring frequently, until the tomato paste releases its color into the oil, 2 to 3 minutes.</p>
+					<p><strong>Step 3:</strong>Place the chicken breast on top of the vegetables and season with 2 teaspoons salt and ¼ teaspoon pepper. Add 6 cups of water and stir. Partially cover, increase heat and bring to a boil, then cover completely, adjust heat to low and simmer gently for 40 minutes.</p>
+					<p><strong>Step 4:</strong>After 40 minutes, transfer the chicken to a medium bowl and shred with two forks while the soup continues to simmer. Taste the soup and adjust salt as needed. Add the shredded chicken and vermicelli, stir and increase heat to bring the soup to a lively simmer. Cover, adjust heat to low and simmer until the noodles soften and the flavors come together, 10 minutes.</p>
+					<p><strong>Step 5:</strong>Remove from the heat, stir in the parsley and lime juice and let sit, covered, for 5 to 10 minutes. Taste and adjust seasoning with more lime juice, salt or pepper as needed.
+							Serve with lime slices and garnish with more parsley.</p>
+					</div>
+</div>
+
+				<div class="recipe" id="breakfast-recipe" style="display: none;">
+					<header class="h2"><h2>Breakfast Ideas and Recipes</h2></header>
+					<header class="h3"><p>German Pancake</p></header>
+					<div class="recipe-container">
+						<div class="recipe-image">
+							<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\German-Pancake.jpg" width="550" alt="German Pancake">
+						</div>
+					<div class="Ingredients">
+						<h3>Ingredients</h3>
+						<p>Yield: 4-6 servings</p>
+						<ul>
+							<li> 1 cup/130 grams all-purpose flour</li>
+							<li>1 cup/ 240 milliliters whole milk, at room temperature </li>
+							<li> 5 large eggs, at room temperature</li>
+							<li>2 tablespoons granulated sugar </li>
+							<li>1 teaspoon vanilla extract </li>
+							<li> ½ teaspoon kosher salt (such as Diamond Crystal)</li>
+							<li> 4 tablespoons/57 grams unsalted butter</li>
+							<li> Powdered sugar, maple syrup and berries, for serving</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipe_Instruction3', this)" class="instruction-button">Show Recipe Details</button>
+						<button class="fav-button"data-id="recipe4" onclick="toggleFavourite(this)">						
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+						</button>
+						</div>
+					</div>
+					</div>
+					<div id="recipe_Instruction3" class="recipeInstruction" style="display: none;">
+						<header class="h1"><h3>Cooking Instruction</h3></header>
+						<p><strong>Step 1:</strong> Heat the oven to 425 degrees and place a 9-by-13-inch metal pan in the oven.</p>
+						<p><strong>Step 2:</strong> Prepare the pancake batter: To a blender, add the flour, milk, eggs, sugar, 
+							vanilla and salt, and blend on high speed for 10 to 15 seconds, until smooth, pausing to scrape down the side with a spatula if necessary.</p>
+						<p><strong>Step 3:</strong> Add the butter to the heated pan in the oven and cook until melted and sizzling, 1 to 2 minutes.</p>
+						<p><strong>Step 4:</strong> Working quickly, carefully tilt the pan so the butter is evenly distributed, then pour the batter into the center of the pan.</p>
+						<p><strong>Step 5:</strong> Bake for 16 to 20 minutes, until the edges are puffed and browned and the center is just starting to take on color.
+							 Cut into squares and serve hot with powdered sugar, maple syrup and fresh berries. (The pancake will deflate as it sits.)</p>
+					</div>
+				
+						<header class="h3"><p>Sour Cream Pancakes With Cardamon Apples </p></header>
+						<div class="recipe-container">
+							<div class="recipe-image">
+								<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\sour-cream-pancakes.webp" width="550" alt="Sour Crem Pancakes With Cardamon Apples ">
+							</div>
+						<div class="Ingredients">
+							<h3>Ingredients</h3>
+							<p>Yield: 6 servings</p>
+							<ul>
+								<li>1 cup/128 grams all-purpose flour </li>
+								<li>1½ teaspoons baking powder </li>
+								<li> 1 teaspoon baking soda</li>
+								<li> ½ teaspoon fine sea salt</li>
+								<li>2 cups/ 454 grams sour cream </li>
+								<li>4 large eggs </li>
+								<li>½ teaspoon vanilla extract </li>
+								<li> 2 tablespoons salted butter</li>
+								<li>6 tablespoons salted butter </li>
+								<li> ¼ cup/50 grams brown sugar</li>
+								<li>2 pounds Gala (or other) apples, peeled, cored and sliced ¼-inch thick (3 to 4 medium apples) </li>
+								<li>1 teaspoon ground cardamom </li>
+							</ul>
+							<div class="rec-inform">
+							<button onclick="toggleRecipeDetails('recipe_Instruction4', this)" class="instruction-button">Show Recipe Details</button>
+							<button class="fav-button"data-id="recipe5" onclick="toggleFavourite(this)">						
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+							</button>
+							</div>
+						</div>
+						</div>
+						<div id="recipe_Instruction4" class="recipeInstruction" style="display: none;">
+							<header class="h1"><h3>Cooking Instruction</h3></header>
+							<p><strong>Step 1:</strong> In a large bowl, whisk together flour, baking powder, baking soda and sea salt. Next, mix in the sour cream. In a medium bowl, whisk together the eggs and vanilla.
+								Gently fold the eggs into the flour and sour cream mixture just until fully incorporated. Set the pancake batter aside.</p>
+							<p><strong>Step 2:</strong> Prepare the apples: In a large skillet over medium-high heat, melt 4 tablespoons of butter. Add the brown sugar and stir until dissolved. Next, mix in your apples and cardamom and cook, stirring occasionally, until soft, 15 to 25 minutes, depending on how crisp-tender you'd like them to be. 
+								When the apples are soft, take the skillet off the heat and stir in the remaining 2 tablespoons of butter.</p>
+							<p><strong>Step 3:</strong> While the apples cook, make your pancakes: In a large nonstick skillet over medium-high heat, melt 1 tablespoon butter. When the butter has melted, cook your pancakes, adding a scant ½ cup pancake batter for each (you should be able to fit 3 pancakes at a time in a large skillet). 
+								Let the batter cook, unbothered, until the bottom is crisp and brown, and bubbles appear, about 2 minutes. 
+								Flip the pancakes and cook until browned underneath, about 1 minute. Repeat with the rest of the batter, melting additional butter in the pan as needed.</p>
+							<p><strong>Step 4:</strong>In a small bowl, mix together sour cream and maple syrup. When the other two dishes finish cooking, plate the pancakes 
+								and top with a generous helping of caramelized cardamom apples and a spoonful of maple sour cream. </p>
+							</div>
+				</div>
+
+				<div class="recipe" id="lunch-recipe" style="display: none;">
+					<header class="h2"><h2>Our Best Lunch Recipes </h2></header>
+					<header class="h3"><p>Smoked Salmon and Avocado Toast With Carrot Salad</p></header>
+					<div class="recipe-container">
+						<div class="recipe-image">
+							<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\smoked-salmon-and-carrot-salad-toast.webp " width="550" alt="Smoked Salmon and Avocado Toast With Carrot Salad
+							">
+						</div>
+					<div class="Ingredients">
+						<h3>Ingredients</h3>
+						<p>Yield: 1 serving</p>
+						<ul>
+							<li>1 small carrot, peeled and shaved lengthwise using a peeler </li>
+							<li> 1 tablespoon olive oil</li>
+							<li> 2 teaspoons distilled white vinegar</li>
+							<li> Salt and pepper</li>
+							<li> 1 slice sourdough bread</li>
+							<li>1 small avocado </li>
+							<li> 1 tablespoon capers, drained</li>
+							<li> 3 ounces smoked salmon</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipe_Instruction5', this)" class="instruction-button">Show Recipe Details</button>
+						<button class="fav-button"data-id="recipe6" onclick="toggleFavourite(this)">						
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+						</button>
+						</div>
+					</div>
+					</div>
+					<div id="recipe_Instruction5" class="recipeInstruction" style="display: none;">
+						<header class="h1"><h3>Cooking Instruction</h3></header>
+						<p><strong>Step 1:</strong> In a small bowl, combine carrots, oil and vinegar; season to taste with salt and pepper. 
+							Mix and set aside. (Carrot salad can be refrigerated for a day or two before serving.)</p>
+						<p><strong>Step 2:</strong>In a small skillet over medium-high heat, 
+							toast both sides of the sourdough bread to desired level of doneness, about 3 minutes for the first side and 2 minutes for the second.When the bread is toasted, plate it and top with mashed avocado. 
+							Press the capers on top, drape with the smoked salmon and finish with the shaved raw carrot salad. </p>
+					</div>
+				
+						<header class="h3"><p>Chaat Party</p></header>
+						<div class="recipe-container">
+							<div class="recipe-image">
+								<img src=" C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\merlin_215517741_bd50dae8-e2fa-4eb2-a566-c087f76a85a2-threeByTwoMediumAt2X.webp" width="550" alt="Chaat Party ">
+							</div>
+						<div class="Ingredients">
+							<h3>Ingredients</h3>
+							<p>Yield: varies</p>
+							<ul>
+								<li>Crunchy bases: Chakri (chickpea flour crackers) </li>
+								<li>Chekkalu (rice flour crackers) </li>
+								<li>Murukku (wheat flour crackers) </li>
+								<li>Tomatoes, cucumbers, mangoes and radishes, coarsely chopped </li>
+								<li> Boiled potatoes, coarsely chopped</li>
+								<li>Fresh red chiles, such as Kashmiri or bird's eye, and green chiles, such as serrano,chopped </li>
+								<li>Roasted corn kernels </li>
+								<li> Roasted sweet potatoes, coarsely chopped Cilantro and mint, coarsely chopped Onions and fresh ginger, finely chopped</li>
+								<li> Sauces: Tamarind Chutney.</li>
+								<li> Cilantro-Mint Chutney.</li>
+								<li>Green Chile Chutney.</li>
+							</ul>
+							<div class="rec-inform">
+							<button onclick="toggleRecipeDetails('recipe_Instruction6', this)" class="instruction-button">Show Recipe Details</button>
+							<button class="fav-button"data-id="recipe7" onclick="toggleFavourite(this)">						
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+							</button>
+							</div>
+						</div>
+						</div>
+						<div id="recipe_Instruction6" class="recipeInstruction" style="display: none;">
+							<header class="h1"><h3>Cooking Instruction</h3></header>
+							<p><strong>Step 1:</strong>Put each item in an individual bowl alongside 
+								a stack of larger bowls to enable your guests to mix up their chaat with a spoon or, more traditionally, their hands. </p>
+							<p><strong>Step 2:</strong> As a starter suggestion for assembly: Begin with a crunchy base (crackers, bhel or murukku), add vegetables and fruits, then chutneys and raita, 
+								and finally lime juice, plus any combination of other toppings, such as chaat masala, red chile powder and sev. Improv and adjustments are encouraged.</p>
+							</div>
+				</div>
+				
+				<div class="recipe" id="dessert-recipe" style="display: none;">
+					<header class="h2"><h2> Desserts</h2></header>
+					<header class="h3"><p> Brownies	</p></header>
+					<div class="recipe-container">
+						<div class="recipe-image">
+							<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\brownies.jpg" width="550" alt="Brownies">
+						</div>
+					<div class="Ingredients">
+						<h3>Ingredients</h3>
+						<p>Yield: 9-12 servings</p>
+						<ul>
+							<li>Nonstick cooking spray, for greasing </li>
+							<li>½ Cup / 113 grams unsalted butter (1 stick) </li>
+							<li> 1 cup/200 grams granulated sugar</li>
+							<li> ½ cup/86 grams dark or semisweet chocolate chips</li>
+							<li> 2 large eggs</li>
+							<li>1 teaspoon vanilla extract </li>
+							<li>½ cup/ 47 grams unsweetened cocoa powder </li>
+							<li> ½ cup/64 grams all-purpose flour</li>
+							<li>½ teaspoon kosher salt </li>
+							<li>⅛ teaspoon baking soda</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipe_Instruction7', this)" class="instruction-button">Show Recipe Details</button>
+						<button class="fav-button"data-id="recipe8" onclick="toggleFavourite(this)">						
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+						</button>
+					  </div>
+					</div>
+					</div>
+					<div id="recipe_Instruction7" class="recipeInstruction" style="display: none;">
+						<header class="h1"><h3>Cooking Instruction</h3></header>
+						<p><strong>Step 1:</strong> Heat the oven to 325 degrees, with a rack positioned in the center.
+							 Grease an 8-inch-square baking pan with cooking spray and line the bottom with parchment paper.</p>
+						<p><strong>Step 2:</strong>Combine the butter and sugar in a small saucepan. Cook over medium heat, 
+							stirring occasionally, until the butter comes to a simmer. Turn off the heat, then add the chocolate chips and stir until melted. (The mixture will be grainy at this point.)
+							 Pour into a large mixing bowl and set aside until just warm to the touch. </p>
+						<p><strong>Step 3:</strong>Add the eggs and vanilla to the mixing bowl and whisk vigorously for 1 minute, until pale and glossy. Add the cocoa powder and whisk until incorporated. 
+							Add the flour, salt and baking soda and mix with a wooden spoon or spatula until well combined. Transfer the batter to the prepared pan and smooth the top. </p>
+						<p><strong>Step 4:</strong> Bake brownies until a toothpick comes out with just a few crumbs on it, 30 to 33 minutes.
+							 Cool completely in the pan before slicing into squares. Brownies will keep for up to 3 days, well-wrapped at room temperature.</p>
+					</div>
+				
+						<header class="h3"><p> Skillet Chocolate Chip Cookie</p></header>
+						<div class="recipe-container">
+							<div class="recipe-image">
+								<img src=" C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\skillet-cookie.jpg" width="550" alt="Skillet Chocolate Chip Cookie">
+							</div>
+						<div class="Ingredients">
+							<h3>Ingredients</h3>
+							<p>Yield: 8 servings</p>
+							<ul>
+								<li>8 tablespoons/113 grams unsalted butter, at room temperature </li>
+								<li> ½ Cup/110 grams packed dark brown sugar</li>
+								<li>½ Cup/ 100 grams granulated sugar </li>
+								<li>1 large egg</li>
+								<li> 1 tablespoon vanilla extract</li>
+								<li>1½ cups/ 192 grams all-purpose flour </li>
+								<li>¾ teaspoon baking soda </li>
+								<li>¾ teaspoon kosher salt (such as Diamond Crystal)</li>
+								<li>1 cup/ 140 grams chopped semi-sweet chocolate </li>
+								<li>1 cup/ 96 grams whole walnut halves or walnut pieces </li>
+							</ul>
+							<div class="rec-inform">
+							<button onclick="toggleRecipeDetails('recipe_Instruction8', this)" class="instruction-button">Show Recipe Details</button>
+							<button class="fav-button"data-id="recipe9" onclick="toggleFavourite(this)">						
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+							</button>
+							</div>
+						</div>
+						</div>
+						<div id="recipe_Instruction8" class="recipeInstruction" style="display: none;">
+							<header class="h1"><h3>Cooking Instruction</h3></header>
+							<p><strong>Step 1:</strong> Heat the oven to 350 degrees. In a large bowl, with a wooden spoon or an electric mixer on medium, combine the butter,
+								 brown sugar and granulated sugar and beat until smooth and creamy, about 1 minute. Add the egg and vanilla and beat to combine.</p>
+							<p><strong>Step 2:</strong>Add the flour, baking soda and salt to the butter mixture and mix until just combined. Mix in the chocolate and the walnut halves. </p>
+							<p><strong>Step 3:</strong>Spread the batter evenly in a 12-inch oven-safe skillet. It will be thin. Bake until golden brown and set but still slightly gooey in the center, 20 to 22 minutes. Let stand for at least 5 minutes before serving warm or at room temperature.
+								The cookie is best the day it’s made, but leftovers will last, well-wrapped, up to 3 days at room temperature. </p>
+							</div>
+				</div>
+				
+				<div class="recipe" id="vegan-recipe" style="display: none;">
+					<header class="h2"><h2> Vegan Recipes	</h2></header>
+					<header class="h3"><p> Vegan Caesar Salad With Crisp Chickpeas</p></header>
+					<div class="recipe-container">
+						<div class="recipe-image">
+							<img src=" C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\vegan-caesar.webp" width="550" alt="Vegan Caesar Salad With Crisp Chickpeas">
+						</div>
+					<div class="Ingredients">
+						<h3>Ingredients</h3>
+						<p>Yield:2-4 servings</p>
+						<ul>
+							<p>For the salad:</p>
+							<li>  ½small loaf crusty bread, such as sourdough, torn into 1-inch pieces (about 2 cups) </li>
+							<li>   ¼cup extra-virgin olive oil</li>
+							<li>  Kosher salt and freshly ground black pepper </li>
+							<li>  1(14-ounce) can chickpeas, drained, rinsed and thoroughly dried </li>
+							<li>   1large bunch lacinato kale, stems removed and roughly chopped into 1-inch pieces (about 4 cups)</li>
+							<li>   1large head romaine lettuce, roughly chopped into 1-inch pieces (about 6 cups)</li>
+							<p>For the dressing: </p>
+							<li>  1cup whole (unroasted) cashews</li>
+							<li>  1snack-size (2-by-3-inch) sheet roasted nori, crumbled (optional)</li>
+							<li>  ¼cup nutritional yeast, plus more for serving</li>
+							<li>  ¼cup fresh lemon juice (from 1 to 2 lemons)</li>
+							<li>  3garlic cloves</li>
+							<li>  2teaspoons brine from a jar of capers</li>
+							<li>  1teaspoon Dijon mustard</li>
+							<li>  1teaspoon white miso paste</li>
+							<li>  ¾teaspoon kosher salt</li>
+							<li>  ½teaspoon freshly ground black pepper</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipe_Instruction9', this)" class="instruction-button">Show Recipe Details</button>
+						<button class="fav-button"data-id="recipe10" onclick="toggleFavourite(this)">						
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+						</button>
+						</div>
+					</div>
+					</div>
+					<div id="recipe_Instruction9" class="recipeInstruction" style="display: none;">
+						<header class="h1"><h3>Cooking Instruction</h3></header>
+						<p><strong>Step 1:</strong> Heat the oven to 400 degrees. On a medium baking sheet, toss the bread with 2 tablespoons olive oil; season generously with salt and pepper. On a second baking sheet, toss the chickpeas with remaining 2 tablespoons oil; season generously with salt and pepper. Bake both until 
+							chickpeas and croutons are browned and crisp, stirring both halfway through, about 10 minutes for the croutons and 20 minutes for the chickpeas. Set aside.</p>
+						<p><strong>Step 2:</strong>While the chickpeas and croutons roast, prepare your dressing: To a high-speed blender, add all the dressing ingredients, plus ¾ teaspoon kosher salt, ½ teaspoon pepper and ¾ cup water;
+							 blend until completely smooth, 3 to 4 minutes, scraping down the sides with a rubber spatula every now and again. Set dressing aside. (You should have 1½ cups).</p>
+						<p><strong>Step 3:</strong>In a large bowl, add the kale and the dressing. Using your hands, massage the kale until slightly softened. Add the lettuce, croutons and half the roasted chickpeas; toss to coat and season to taste with salt and pepper. 
+							Sprinkle with additional nutritional yeast. Top with remaining roasted chickpeas; grind black pepper over, and serve immediately. </p>
+					</div>
+				
+						<header class="h3"><p> Vegan Pesto Pasta Salad</p></header>
+						<div class="recipe-container">
+							<div class="recipe-image">
+								<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\Vegan-Pesto-Pasta-Salad.webp" width="550" alt=" Vegan Pesto Pasta Salad">
+							</div>
+						<div class="Ingredients">
+							<h3>Ingredients</h3>
+							<p>Yield: 4 servings</p>
+							<ul>
+								<li>Salt </li>
+								<li> 1pound fusilli or other twirly noodle </li>
+								<li> 1pint cherry tomatoes, halved </li>
+								<li> ½ cup raw pistachios, slivered almonds or pine nuts </li>
+								<li> ⅓cup rinsed capers</li>
+								<li> 1large garlic clove, peeled</li>
+								<li> 2packed cups basil leaves, plus more for serving</li>
+								<li> Black pepper</li>
+								<li> 2tablespoons lemon juice </li>
+								<li> ⅓cup extra-virgin olive oil </li>
+								<li> 2big handfuls arugula</li>
+							</ul>
+							<div class="rec-inform">
+							<button onclick="toggleRecipeDetails('recipe_Instruction10', this)" class="instruction-button">Show Recipe Details</button>
+							<button class="fav-button"data-id="recipe11" onclick="toggleFavourite(this)">						
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+							</button>
+							</div>
+						</div>
+						</div>
+						<div id="recipe_Instruction10" class="recipeInstruction" style="display: none;">
+							<header class="h1"><h3>Cooking Instruction</h3></header>
+							<p><strong>Step 1:</strong>Bring a large pot of salted water to a boil. When the water’s boiling, add the pasta and cook until tender.
+								 Drain the pasta, rinse under cold water until cool to the touch, then shake dry. </p>
+							<p><strong>Step 2:</strong> Meanwhile, transfer the tomatoes and a big pinch of salt to a large bowl. Stir to combine and set aside. Make the pesto: Add the pistachios, capers and garlic to a food processor and pulse until coarsely chopped. Add the basil and a pinch each of salt and pepper. Pulse until finely chopped. Add the lemon juice. With the motor running, 
+								gradually drizzle in the oil until well blended, scraping down the sides as needed. Scrape the pesto into the bowl of tomatoes.</p>
+							<p><strong>Step 3:</strong> Add the pasta to the pesto and tomatoes and stir until well coated. Let cool slightly, about 5 minutes, then stir in the arugula and a few torn basil leaves. Season to taste with salt.
+								 The salad can sit for up to 2 hours, or refrigerated for up to 2 days. Refresh with salt, lemon juice and oil as needed.</p>
+							</div>
+				</div>
+
+				<div class="recipe" id="vegetarian-recipe" style="display: none;">
+					<header class="h2"><h2>Vegetarian Recipes </h2></header>
+					<header class="h3"><p>Pozole Verde</p></header>
+						<div class="recipe-container">
+							<div class="recipe-image">
+								<img src=" C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\12EATrex-cjvm-threeByTwoMediumAt2X.webp" width="550" alt=" Pozole Verde">
+							</div>
+						<div class="Ingredients">
+							<h3>Ingredients</h3>
+							<p>Yield: 6-8 servings</p>
+						<ul>
+							<p>For the soup:</p>
+							<li> 1bunch cilantro </li>
+							<li> 1white onion</li>
+							<li> 6garlic cloves </li>
+							<li> 2pounds tomatillos</li>
+							<li> 3large poblano chiles </li>
+							<li> 1jalapeño</li>
+							<li> 1lime, plus wedges for serving, if you like </li>
+							<li> 4 to 6tablespoons olive oil </li>
+							<li> Salt </li>
+							<li> 2teaspoons ground cumin </li>
+							<li> 2teaspoons dried oregano </li>
+							<li> 1bunch lacinato kale, stemmed and chopped into bite-size pieces (or 4 tightly packed cups, about 8 ounces, chopped hardy greens)</li>
+							<li> 2(15-ounce) cans hominy, drained</li>
+							<li> 4cups store-bought or homemade vegetable broth</li>
+							<p> For the toppings:</p>
+							<li> 2 to 3cups shredded green cabbage</li>
+							<li> 2 to 4radishes, thinly sliced </li>
+							<li> 1jalapeño, thinly sliced </li>
+							<li> Queso fresco (about 3 tablespoons per bowl) </li>
+							<li> Crema or sour cream (about 2 tablespoons per bowl) </li>
+							<li> Flaky salt </li>
+							<li> Sliced avocado (optional)</li>
+						</ul>
+						<div class="rec-inform">
+						<button onclick="toggleRecipeDetails('recipe_Instruction11', this)" class="instruction-button">Show Recipe Details</button>
+						<button class="fav-button"data-id="recipe12" onclick="toggleFavourite(this)">						
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+						</button>
+						</div>
+					</div>
+				</div>
+				<div id="recipe_Instruction11" class="recipeInstruction" style="display: none;">
+					<header class="h1"><h3>Cooking Instruction</h3></header>
+					<p><strong>Step 1:</strong>Heat oven to 475 degrees. </p>
+					<p><strong>Step 2:</strong>Prepare the soup: Separate the cilantro leaves and tender stems from the thicker stems. Place the thicker stems 
+						on a large sheet pan and refrigerate the remaining until ready to serve the soup. </p>
+					<p><strong>Step 3:</strong>Halve and peel the onion. Cut half into rough wedges and place on the sheet pan; finely dice the second half and set aside. Peel the garlic cloves; place 3 whole cloves on the sheet pan, then mince the remaining 3 cloves and set aside. 
+						Peel and quarter the tomatillos; halve, seed and stem the poblanos and jalapeño; and halve the lime; add all to the pan. </p>
+					<p><strong>Step 4:</strong> Drizzle the contents of the pan with a hearty amount of olive oil and a very generous tablespoon of salt. Toss together until well coated. 
+						Roast until the vegetables are well-browned yet there is still plenty of liquid in the pan, 25 to 30 minutes.</p>
+					<p><strong>Step 5:</strong>While vegetables are roasting, heat a large pot over medium. Add 3 tablespoons of olive oil, the diced onion and a generous pinch of salt. Turn down to medium-low and cook, stirring occasionally, until soft and fragrant, 7 to 9 minutes. Stir in the minced garlic, cumin and oregano, and cook for 2 to 3 minutes to open up the flavors, then stir in the chopped kale. 
+						Cover and adjust the heat to low, stirring occasionally to cook down a bit; continue cooking while you tend to the roasted vegetables. </p>
+					<p><strong>Step 6:</strong>Take the roasted vegetables out of the oven and immediately transfer the poblano chiles to a bowl, cover with a plate and set aside to steam. </p>
+					<p><strong>Step 7:</strong> Let the remaining roasted vegetables cool for 5 minutes. Remove the lime halves and squeeze the juices and pulp onto the roasted vegetables; discard the peels. Using tongs, transfer the vegetables to a food processor.</p>
+					<p><strong>Step 8:</strong>Carefully pour and scrape the juices and any roasty bits from the sheet pan into the pot and stir into the kale mixture. </p>
+					<p><strong>Step 9:</strong> With the vent on the food processor lid open to allow the steam to escape, pulse the vegetables until combined yet still chunky, then scrape into the pot. Turn the heat to medium-high.
+						Add the hominy and broth, and salt to taste. Stir well to combine and bring to a gentle simmer over medium heat.</p>
+					<p><strong>Step 10:</strong>While the pozole comes to a simmer, peel off the clear outer skins of the poblanos and discard. Roughly chop the poblanos and add to the soup. Let simmer for 20 to 30 minutes, until the flavors have melded.
+						Taste and adjust salt; don’t be shy here — salt will help pull all the flavors out and balance the acidity from all the tomatillos.</p>
+					<p><strong>Step 11:</strong>To serve, ladle a hearty portion into each bowl, top with cabbage, radishes, jalapeño slices, queso fresco, crema and the reserved cilantro. 
+						Add a generous pinch of flaky sea salt to finish and serve with avocado and more lime, if you like. </p>
+					</div>
+
+		<header class="h3"><p> Grilled Zucchini</p></header>
+		<div class="recipe-container">
+			<div class="recipe-image">
+				<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\grilled zucchini.webp " width="550" alt="Grilled Zucchini ">
+			</div>
+		<div class="Ingredients">
+			<h3>Ingredients</h3>
+			<p>Yield: 4-6 servings</p>
+			<ul>
+				<li> 3large zucchini (about 8 ounces each), cut lengthwise into ½-inch planks </li>
+				<li> Extra-virgin olive oil, as needed </li>
+				<li> Coarse salt and freshly ground black pepper</li>
+				<li> 1cup fresh ricotta (optional) </li>
+				<li> Fresh basil leaves (or other tender herbs, such as dill, mint or oregano), chopped capers and lemon, for garnish (optional) </li>
+			</ul>
+			<div class="rec-inform">
+			<button onclick="toggleRecipeDetails('recipe_Instruction12', this)" class="instruction-button">Show Recipe Details</button>
+			<button class="fav-button">						
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+			</button>
+			</div>
+		</div>
+		</div>
+		<div id="recipe_Instruction12" class="recipeInstruction" style="display: none;">
+			<header class="h1"><h3>Cooking Instruction</h3></header>
+			<p><strong>Step 1:</strong>Prepare the grill for direct grilling and heat over high. </p>
+			<p><strong>Step 2:</strong> Working on a large baking sheet, brush the zucchini all over with oil, then season generously with salt and pepper.</p>
+			<p><strong>Step 3:</strong>Once the grill is heated, add the zucchini to the grates in an even layer, leaving about 1 inch between to avoid crowding. Cook, uncovered, 
+				until grill-marked and crisp-tender, 3 to 4 minutes per side. (The zucchini should tenderize in just the amount of time it takes to develop grill marks.) </p>
+			<p><strong>Step 4:</strong> In a small bowl, stir the ricotta, if using, with a couple tablespoons of water until extra creamy; season with salt and pepper. Spread the ricotta mixture on a platter, then top with the grilled zucchini, piling it organically to gain some height.
+				 Though you need no garnish, you can top with fresh herbs, capers, a flurry of lemon zest and a squeeze of lemon juice if you are feeling fancy. Drizzle with olive oil and serve warm or at room temperature</p>
+			</div>
+				</div>
+<div class="about_us" id="about-us-section" style="display: none;">
+	<div class="about_text">
+		<h2>About Us</h2>
+		<p>Welcome to YummyNest! Here, cooking feels like home.</p>
+		<p>We believe that every dish tells a story, and we're here to help you write yours — one delicious recipe at a time.</p>
+		<p>Whether you're a beginner or a kitchen pro, YummyNest is your cozy corner for simple, tasty, and feel-good meals.</p>
+		<p>Let’s cook, share, and enjoy the little things together.</p>
+		<p>Our mission is to make home cooking accessible and enjoyable for everyone. Thank you for being part of our nest!</p>
+	</div>
+	<div class="about_image">
+		<img src="C:\Users\Polina\OneDrive\Робочий стіл\projects\YummyNest site\img\about us.png" width="400" alt="about_image">
+	</div>
+</div>
+</body>
+<footer id="contact">
+	<div class="footer">
+	<div class="about_text">
+		<p> <h2>About Us</h2></p>
+		<p>Welcome to YummyNest! Here, cooking feels like home.</p>
+		<p>We believe that every dish tells a story, and we're here to help you write yours — one delicious recipe at a time.</p>
+		<p>Let’s cook, share, and enjoy the little things together.</p>
+		<br><br><p>Contact us: info@YummyNest.com</p>
+		</div>
+		<div class="map">
+			<p><h3>Map</h3></p>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2596.077826960002!2d32.05373991569395!3d49.40743387934503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xba464a0e8d80c83c!2z0KfQtdGA0LrQsNGB0YHQutC40Lkg0JHQuNC30L3QtdGBINCa0L7Qu9C70LXQtNC2!5e0!3m2!1sru!2sua!4v1452777426689"  width="100%" height="250px"></iframe>
+		</div>
+	</div>
+<script src="functions.js"></script>
+</footer>
+</html>
+
